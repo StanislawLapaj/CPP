@@ -1,0 +1,72 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+int main()
+{
+  vector<int>klucz;
+  int lkol;
+  cout<<"Podaj liczbe kolumn: ";
+  cin>>lkol;
+  cout<<"Podaj kolejnosc kolumn: "<<endl;
+  klucz.push_back(lkol);
+  for(int i=1;i<lkol+1;i++)
+  {
+      int j;
+      cout<<i<<" w kolejnosci:";
+      cin>>j;
+      klucz.push_back(j-1);
+      cout<<endl;
+  }
+  cout<<"Klucz to : ";
+  for(int i=0;i<klucz.size();i++)
+  {
+      cout<<klucz[i];
+  }
+  cout<<endl;
+  int llit;
+  cout<<"Podaj liczbe liter w slowie: ";
+  cin>>llit;
+  vector<char>text;
+  cout<<"Podaj slowo litera po literze: "<<endl;
+  for(int i=0;i<llit;i++)
+  {
+    char litera;
+    cin>>litera;
+    text.push_back(litera);
+  }
+  cout<<endl;
+  for(int i=0;i<text.size();i++)
+  {
+    cout<<text[i];
+  }
+  char tab[lkol][text.size()/lkol];
+  cout<<endl;
+  int index=0;
+  for(int i=0;i<text.size()/lkol;i++)
+  {
+    for(int j=0;j<lkol;j++)
+    {
+      tab[j][i]=text[index];
+      index++;
+    }
+  }
+  cout<<endl;
+  for(int i=0;i<text.size()/lkol;i++)
+  {
+    for(int j=0;j<lkol;j++)
+    {
+      cout<<tab[j][i]<<" ";
+    }
+    cout<<endl;
+  }
+  cout<<endl<<"Zaszyfrowana wiadomosc to: ";
+  int index2=0;
+  for(int i=0;i<lkol+1;i++)
+    {
+      for(int j=0;j<text.size()/lkol;j++)
+        {
+          cout<<tab[klucz[index2]][j];
+        }
+      index2++;
+    }
+}
